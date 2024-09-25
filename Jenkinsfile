@@ -11,7 +11,7 @@ pipeline {
         registryCredential = 'dockerhub'
     }
 
-    stages {
+    stages{
 
         stage('BUILD'){
             steps {
@@ -72,15 +72,15 @@ pipeline {
             }
         }
 
-        stage('Build App image') {
+        stage('Build App Image') {
           steps {
             script {
-               dockerImage = docker.build registry + ":V$BUILD_NUMBER"
+              dockerImage = docker.build registry + ":V$BUILD_NUMBER"
             }
           }
         }
 
-        stage('Upload Image') {
+        stage('Upload Image'){
           steps{
             script {
               docker.withRegistry('', registryCredential) {
@@ -104,5 +104,6 @@ pipeline {
             }
         }
     }
+
 
 }
